@@ -25,9 +25,7 @@ public class SubmitOrderTest extends BaseTest {
     public void submitOrderTest() throws InterruptedException, IOException {
 
         String productName = "ZARA COAT 3";
-        LandingPage landingPage = launchApp();
         ProductCatalogue productCatalogue = landingPage.loginApplication("abbeylincoln@gmail.com", "Abbey100!");
-
         List<WebElement> productsList = productCatalogue.getProductList();
         productCatalogue.addProductToCart(productName);
         CartPage cartPage = productCatalogue.goToCardPage();
@@ -39,6 +37,6 @@ public class SubmitOrderTest extends BaseTest {
         OrderConfirmationPage confirmationPage = checkoutPage.submitOrder();
         String confirmMessage = confirmationPage.getConfirmationMsg();
         Assert.assertTrue(confirmMessage.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
-        driver.close();
+
     }
 }

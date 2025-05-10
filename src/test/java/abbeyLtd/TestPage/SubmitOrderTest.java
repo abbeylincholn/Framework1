@@ -2,15 +2,11 @@ package abbeyLtd.TestPage;
 
 import abbeyLtd.PageObjects.*;
 import abbeyLtd.TestComponent.BaseTest;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -31,7 +27,7 @@ public class SubmitOrderTest extends BaseTest {
        // String productName = "ZARA COAT 3";
 
     @Test(dataProvider = "getData", groups = {"Purchase"})
-    public void submitOrderTest(HashMap<String, String> input) throws InterruptedException, IOException {
+    public void submitOrder(HashMap<String, String> input) throws InterruptedException, IOException {
         ProductCatalogue productCatalogue = landingPage.loginApplication(input.get("username"), input.get("password"));
         List<WebElement> productsList = productCatalogue.getProductList();
         productCatalogue.addProductToCart(input.get("productName"));
@@ -48,7 +44,7 @@ public class SubmitOrderTest extends BaseTest {
 
     // Dependency attribute test strategy
     //To verify Zara Coat 3 is displaying in orders page.
-    @Test (dependsOnMethods = "submitOrderTest", dataProvider = "getData")
+    @Test (dependsOnMethods = "submitOrder", dataProvider = "getData")
     public void orderHistoryTest(HashMap<String, String> input)  {
         ProductCatalogue productCatalogue = landingPage.loginApplication(input.get("username"), input.get("password"));
         OrderPage orderPage = productCatalogue.goToOrderPage();
@@ -56,13 +52,6 @@ public class SubmitOrderTest extends BaseTest {
         Assert.assertTrue(match);
     }
 
-    public String getScreenshot(String testCaseName) throws IOException {
-        TakesScreenshot ts = (TakesScreenshot)driver;
-        File source = ts.getScreenshotAs(OutputType.FILE);
-        File file = new File(System.getProperty("user.dir")+"\\screenshots\\"+testCaseName+".png");
-        FileUtils.copyFile(source, file);
-        return System.getProperty("user.dir")+"\\screenshots\\"+testCaseName+".png";
-    }
 
     // Extent Report
 
@@ -93,7 +82,7 @@ public class SubmitOrderTest extends BaseTest {
         HashMap<String, String> map1 = new HashMap<>();
         map1.put("username", "shetty@gmail.com");
         map1.put("password", "Iamking@000");
-        map1.put("productName", "ZARA COAT 3");
+        map1.put("productName", "ADIDAS ORIGINAL");
 
         return new Object[][] {{map}, {map1}};
     }*/

@@ -2,17 +2,11 @@ package abbeyLtd.TestPage;
 
 import abbeyLtd.PageObjects.*;
 import abbeyLtd.TestComponent.BaseTest;
-import com.thoughtworks.qdox.model.expression.LogicalAnd;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.time.Duration;
 import java.util.List;
 
 public class SubmitOrderTest extends BaseTest {
@@ -21,10 +15,12 @@ public class SubmitOrderTest extends BaseTest {
          * Main Java we will use to store all reusable utilities, page object files later in this section.
          *
          */
-    @Test
-    public void submitOrderTest() throws InterruptedException, IOException {
+
 
         String productName = "ZARA COAT 3";
+
+    @Test
+    public void submitOrderTest() throws InterruptedException, IOException {
         ProductCatalogue productCatalogue = landingPage.loginApplication("abbeylincoln@gmail.com", "Abbey100!");
         List<WebElement> productsList = productCatalogue.getProductList();
         productCatalogue.addProductToCart(productName);
@@ -37,6 +33,17 @@ public class SubmitOrderTest extends BaseTest {
         OrderConfirmationPage confirmationPage = checkoutPage.submitOrder();
         String confirmMessage = confirmationPage.getConfirmationMsg();
         Assert.assertTrue(confirmMessage.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
-
     }
+
+    // Dependency attribute test strategy
+    //To verify Zara Coat 3 is displaying in orders page.
+    @Test (dependsOnMethods = "submitOrderTest")
+    public void orderHistoryTest() {
+        ProductCatalogue productCatalogue = landingPage.loginApplication("abbeylincoln@gmail.com", "Abbey100!");
+        OrderPage orderPage = productCatalogue.goToOrderPage();
+        boolean match = orderPage.verifyOrderDisplay(productName);
+        Assert.assertTrue(match);
+    }
+
+
 }

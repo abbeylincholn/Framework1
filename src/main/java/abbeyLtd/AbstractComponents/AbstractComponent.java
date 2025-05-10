@@ -1,6 +1,7 @@
 package abbeyLtd.AbstractComponents;
 
 import abbeyLtd.PageObjects.CartPage;
+import abbeyLtd.PageObjects.OrderPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,6 +32,9 @@ public class AbstractComponent {
     @FindBy (css = "[routerlink*='cart']")
     WebElement cartHeader;
 
+    @FindBy (css = "[routerlink*='myorders']")
+    WebElement orderHeader;
+
     public AbstractComponent(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -54,6 +58,12 @@ public class AbstractComponent {
         cartHeader.click();
         CartPage cartPage = new CartPage(driver);
         return cartPage;
+    }
+
+    public OrderPage goToOrderPage() {
+        orderHeader.click();
+        OrderPage orderPage = new OrderPage(driver);
+        return orderPage;
     }
 
 

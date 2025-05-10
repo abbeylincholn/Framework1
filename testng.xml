@@ -6,6 +6,7 @@
             <class name="abbeyLtd.TestPage.SubmitOrderTest">
                 <methods>
                     <include name="submitOrderTest"/>
+                    <include name="orderHistoryTest"/>
                 </methods>
             </class>
         </classes>

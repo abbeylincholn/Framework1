@@ -14,9 +14,15 @@ import java.util.List;
 public class SubmitOrderTest extends BaseTest {
 
         /**
-         * Main Java we will use to store all reusable utilities, page object files later in this section.
+         * Main Java we will use to store all reusable utilities, page object files later in this section.         *
          *
+         * "In interviews, it's common to be asked how you implement data-driven testing using external files and TestNG's DataProvider.
+         * In our framework, we achieve this by following a step-by-step approach: first, we drive the test data from external sources
+         * such as Excel or JSON files using utility classes. Then, we integrate TestNG's @DataProvider annotation to feed this data into our test methods.
+         * This allows us to parameterize the tests and execute them multiple times with different input sets. With this approach,
+         * two tests have passed successfully, demonstrating how parametrization is effectively handled in our framework."
          */
+
 
        // String productName = "ZARA COAT 3";
 
@@ -46,7 +52,24 @@ public class SubmitOrderTest extends BaseTest {
         Assert.assertTrue(match);
     }
 
+        // the below data provider is for data driven testing also json file too can be used so that the test.
+        // will not have test data, but read from external json file. the 3 approaches are below.
+
     @DataProvider
+    public Object[][] getData() throws IOException {
+
+        List<HashMap<String, String>> data = getJsonDataToMap(System.getProperty("user.dir")+"\\src\\test\\java\\abbeyLtd\\Data\\PurchaseOrder.json"); //getJsonDataToMap();
+        return new Object[][] {{data.get(0)}, {data.get(1)}};
+    }
+
+    /*@DataProvider
+	  public Object[][] getData()
+	  {
+	    return new Object[][]  {{"abbeylincoln@gmail.com" ,"Abbey100!","ZARA COAT 3"}, {"shetty@gmail.com","Iamking@000","ADIDAS ORIGINAL" } };
+
+	  }*/
+
+    /*@DataProvider
     public Object[][] getData() {
         HashMap<String, String> map = new HashMap<>();
         map.put("username", "abbeylincoln@gmail.com");
@@ -57,15 +80,9 @@ public class SubmitOrderTest extends BaseTest {
         map1.put("username", "shetty@gmail.com");
         map1.put("password", "Iamking@000");
         map1.put("productName", "ZARA COAT 3");
+
         return new Object[][] {{map}, {map1}};
-    }
-
-    /*@DataProvider
-	  public Object[][] getData()
-	  {
-	    return new Object[][]  {{"abbeylincoln@gmail.com" ,"Abbey100!","ZARA COAT 3"}, {"shetty@gmail.com","Iamking@000","ADIDAS ORIGINAL" } };
-
-	  }*/
+    }*/
 
 
 

@@ -4,6 +4,7 @@ import abbeyLtd.PageObjects.*;
 import abbeyLtd.TestComponent.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -16,12 +17,11 @@ public class SubmitOrderTest extends BaseTest {
          *
          */
 
+       // String productName = "ZARA COAT 3";
 
-        String productName = "ZARA COAT 3";
-
-    @Test
-    public void submitOrderTest() throws InterruptedException, IOException {
-        ProductCatalogue productCatalogue = landingPage.loginApplication("abbeylincoln@gmail.com", "Abbey100!");
+    @Test(dataProvider = "getData", groups = {"Purchase"})
+    public void submitOrderTest(String userName, String password, String productName) throws InterruptedException, IOException {
+        ProductCatalogue productCatalogue = landingPage.loginApplication(userName, password);
         List<WebElement> productsList = productCatalogue.getProductList();
         productCatalogue.addProductToCart(productName);
         CartPage cartPage = productCatalogue.goToCardPage();
@@ -37,12 +37,17 @@ public class SubmitOrderTest extends BaseTest {
 
     // Dependency attribute test strategy
     //To verify Zara Coat 3 is displaying in orders page.
-    @Test (dependsOnMethods = "submitOrderTest")
-    public void orderHistoryTest() {
-        ProductCatalogue productCatalogue = landingPage.loginApplication("abbeylincoln@gmail.com", "Abbey100!");
+    @Test (dependsOnMethods = "submitOrderTest", dataProvider = "getData")
+    public void orderHistoryTest(String userName, String password, String productName)  {
+        ProductCatalogue productCatalogue = landingPage.loginApplication(userName, password);
         OrderPage orderPage = productCatalogue.goToOrderPage();
         boolean match = orderPage.verifyOrderDisplay(productName);
         Assert.assertTrue(match);
+    }
+
+    @DataProvider
+    public Object[][] getData() {
+        return new Object[][] {{"abbeylincoln@gmail.com", "Abbey100!", "ZARA COAT 3"}, {"shetty@gmail.com", "Iamking@000", "ADIDAS ORIGINAL"}};
     }
 
 

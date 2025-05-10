@@ -2,11 +2,15 @@ package abbeyLtd.TestPage;
 
 import abbeyLtd.PageObjects.*;
 import abbeyLtd.TestComponent.BaseTest;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -51,6 +55,16 @@ public class SubmitOrderTest extends BaseTest {
         boolean match = orderPage.verifyOrderDisplay(input.get("productName"));
         Assert.assertTrue(match);
     }
+
+    public String getScreenshot(String testCaseName) throws IOException {
+        TakesScreenshot ts = (TakesScreenshot)driver;
+        File source = ts.getScreenshotAs(OutputType.FILE);
+        File file = new File(System.getProperty("user.dir")+"\\screenshots\\"+testCaseName+".png");
+        FileUtils.copyFile(source, file);
+        return System.getProperty("user.dir")+"\\screenshots\\"+testCaseName+".png";
+    }
+
+    // Extent Report
 
         // the below data provider is for data driven testing also json file too can be used so that the test.
         // will not have test data, but read from external json file. the 3 approaches are below.

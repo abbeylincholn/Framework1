@@ -79,7 +79,6 @@ public class BaseTest {
         landingPage = new LandingPage(driver);
         landingPage.goTo();
         return landingPage;
-
     }
 
     @AfterMethod(alwaysRun = true)

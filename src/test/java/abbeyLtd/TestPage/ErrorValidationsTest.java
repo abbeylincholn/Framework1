@@ -17,7 +17,7 @@ public class ErrorValidationsTest extends BaseTest {
          * Implements test strategy for framework on how test are divided based on modules. e.g negative and positive scenarios, base on page objects
          * Testng.xml is a runner file
          */
-    @Test
+    @Test (groups = {"ErrorHandling"})
     public void loginErrorValidation() throws InterruptedException, IOException {
         String productName = "ZARA COAT 3";
         landingPage.loginApplication("abbeylincon@gmail.comm", "Abbe0!");

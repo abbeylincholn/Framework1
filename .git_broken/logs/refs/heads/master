@@ -1,0 +1,14 @@
+0000000000000000000000000000000000000000 ee9b534067fc1b8075fd0ace8d9c4ed08803af2b Abbey <abbeylincholn4real@gmail.com> 1746785095 +0100	commit (initial): Normal Selenium Test
+ee9b534067fc1b8075fd0ace8d9c4ed08803af2b f3e5de126fa397cbfd6ffe66493aed52e34d9d46 Abbey <abbeylincholn4real@gmail.com> 1746785168 +0100	commit (amend): Normal Selenium Test
+f3e5de126fa397cbfd6ffe66493aed52e34d9d46 9c5be11c9f841b0da996a6060faad82eef33f0bd Abbey <abbeylincholn4real@gmail.com> 1746785260 +0100	commit: Convert Normal Selenium Test To Framework
+9c5be11c9f841b0da996a6060faad82eef33f0bd 39f06d326dcd99a2e020132b097363908d42c375 Abbey <abbeylincholn4real@gmail.com> 1746794425 +0100	commit: Error Validation Test
+39f06d326dcd99a2e020132b097363908d42c375 a9381a6068459c32ed66f68e9344d7a9c05dbe48 Abbey <abbeylincholn4real@gmail.com> 1746794434 +0100	commit (amend): Error Validation Test
+a9381a6068459c32ed66f68e9344d7a9c05dbe48 212e6493d44b8575a0d1216860addf3099caf111 Abbey <abbeylincholn4real@gmail.com> 1746853441 +0100	commit (amend): Implements test strategy for framework on how test are divided based on modules. e.g negative and positive
+212e6493d44b8575a0d1216860addf3099caf111 d3ca9f985e8bdcf5fe8b6eaa5d3198d8eaf569ec Abbey <abbeylincholn4real@gmail.com> 1746853514 +0100	commit (amend): Implements test strategy for framework on how test are divided based on modules. e.g negative and positive. testng.xml
+d3ca9f985e8bdcf5fe8b6eaa5d3198d8eaf569ec 9cc8a94d77539e8148479acbdb7b697f0e388d0b Abbey <abbeylincholn4real@gmail.com> 1746856433 +0100	commit: Test with Dependency attributes based on test strategy design
+9cc8a94d77539e8148479acbdb7b697f0e388d0b 148637d59a16fccc18e7832d99ca963322582ea9 Abbey <abbeylincholn4real@gmail.com> 1746858829 +0100	commit: Run tests/classes in Parallel & apply Groups using Testng
+148637d59a16fccc18e7832d99ca963322582ea9 c7b65d02150a77cce27707af224f459a3b109aa4 Abbey <abbeylincholn4real@gmail.com> 1746876479 +0100	commit: Parameterization with testng Data provider.
+c7b65d02150a77cce27707af224f459a3b109aa4 8f0e9c5ff3efbf563e7202bb241ffd3a0d8e61eb Abbey <abbeylincholn4real@gmail.com> 1746878962 +0100	commit: Parameterization with testng Data provider. update
+8f0e9c5ff3efbf563e7202bb241ffd3a0d8e61eb cd835105df440fdea8891ee4008d37dfbec010ac Abbey <abbeylincholn4real@gmail.com> 1746882921 +0100	commit: Integration of HashMap to Data provider. Data driven test
+cd835105df440fdea8891ee4008d37dfbec010ac 5e4a64b3747c5a457346e2f6a71b82440bac4e0f Abbey <abbeylincholn4real@gmail.com> 1746884323 +0100	commit: Screenshot utility in base test for catching failed test. but will complete in next class
+5e4a64b3747c5a457346e2f6a71b82440bac4e0f cfefcb88fdfa7078880fa116e7a17b8cc705b98c Abbey <abbeylincholn4real@gmail.com> 1746906228 +0100	commit: ExtentsReport, Listeners, Screenshot, Parallel, Thread Safe

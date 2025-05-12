@@ -1,0 +1,39 @@
+package abbeyLtd.TestPage;
+
+import abbeyLtd.PageObjects.CartPage;
+import abbeyLtd.PageObjects.ProductCatalogue;
+import abbeyLtd.TestComponent.BaseTest;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import java.io.IOException;
+import java.util.List;
+
+public class ErrorValidations extends BaseTest {
+
+        /**
+         * Main Java we will use to store all reusable utilities, page object files later in this section.
+         *
+         */
+    @Test
+    public void loginErrorValidation() throws InterruptedException, IOException {
+
+        String productName = "ZARA COAT 3";
+        landingPage.loginApplication("abbeylincon@gmail.comm", "Abbe0!");
+        Assert.assertEquals("Incorrect email or password.", landingPage.getErrorMessage());
+    }
+
+    @Test
+    public void productErrorValidation() throws InterruptedException, IOException {
+
+        String productName = "ZARA COAT 3";
+        ProductCatalogue productCatalogue = landingPage.loginApplication("abbeylincoln@gmail.com", "Abbey100!");
+        List<WebElement> productsList = productCatalogue.getProductList();
+        productCatalogue.addProductToCart(productName);
+        CartPage cartPage = productCatalogue.goToCardPage();
+        Boolean match = cartPage.verifyProductDisplay("ZARA COAT 33");
+        Assert.assertFalse(match);
+
+    }
+}
